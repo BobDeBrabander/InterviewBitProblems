@@ -1,3 +1,6 @@
+import java.util.LinkedList
+import java.util.Queue
+
 object WordLadder2 {
 
     data class DistNode(val value: String) {
@@ -28,10 +31,10 @@ object WordLadder2 {
     }
 
     private fun bfs(startNode: DistNode) {
-        val q = ArrayDeque<DistNode>()
+        val q: Queue<DistNode> = LinkedList()
         q.add(startNode)
         while (q.isNotEmpty()) {
-            val curNode = q.removeFirst()
+            val curNode = q.poll()
             curNode.adj.forEach {
                 if (it.dist > curNode.dist + 1) {
                     it.dist = curNode.dist + 1

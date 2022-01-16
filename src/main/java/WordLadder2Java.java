@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class WordLadder2Java {
     static class DistNode {
@@ -62,10 +64,10 @@ public class WordLadder2Java {
     }
 
     private static void bfs(DistNode startNode) {
-        ArrayList<DistNode> q = new ArrayList<>();
+        Queue<DistNode> q = new LinkedList<>();
         q.add(startNode);
         while (!q.isEmpty()) {
-            DistNode curNode = q.remove(0);
+            DistNode curNode = q.poll();
             for (int i = 0; i < curNode.adj.size(); i++) {
                 DistNode adjCur = curNode.adj.get(i);
                 if (adjCur.dist > curNode.dist + 1) {
